@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los Incas - Actividades</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f7f6;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #e67e22;
+            padding-bottom: 10px;
+        }
+        h2 {
+            background-color: #e67e22;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #d35400;
+            margin-top: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-fallback {
+            background-color: #fff3e0;
+            border: 2px dashed #e67e22;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .video-fallback a {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+        .video-fallback a:hover {
+            background-color: #c0392b;
+        }
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        .vocab-table th, .vocab-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .vocab-table th {
+            background-color: #34495e;
+            color: white;
+        }
+        .vocab-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .task-box {
+            background-color: #fff3e0;
+            border-left: 5px solid #e67e22;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .task-box h4 {
+            margin-top: 0;
+            color: #d35400;
+        }
+        input[type="text"], textarea, select {
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        input[type="text"] {
+            width: 180px;
+        }
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .check-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 1em;
+        }
+        .check-btn:hover {
+            background-color: #2980b9;
+        }
+        .answer {
+            display: none;
+            background-color: #e8f8f5;
+            border-left: 5px solid #1abc9c;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 0 5px 5px 0;
+            font-size: 0.95em;
+        }
+        .answer.show {
+            display: block;
+        }
+        .zone {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .zone h4 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .zone textarea {
+            width: 100%;
+            height: 70px;
+            box-sizing: border-box;
+            margin-bottom: 8px;
+        }
+        .zone .check-btn {
+            margin-top: 5px;
+        }
+        .highlight {
+            background-color: #fffacd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 2px;
+        }
+        .match-item {
+            margin-bottom: 8px;
+        }
+        .grammar-example {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+        .audio-instruction {
+            background-color: #e8f4f8;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            border-radius: 0 5px 5px 0;
+        }
+        .grammar-sub {
+            background-color: #fef9e7;
+            border-left: 4px solid #f1c40f;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .grammar-sub h5 {
+            margin: 0 0 8px 0;
+            color: #b7950b;
+        }
+        .feedback-sub {
+            margin-top: 8px;
+            font-size: 0.9em;
+        }
+        .homework-box {
+            background-color: #e8f8f5;
+            border-left: 5px solid #1abc9c;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .homework-box h4 {
+            margin-top: 0;
+            color: #16a085;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>LOS INCAS</h1>
+
+    <!-- БЛОК ANTES DE VER (СЛОВАРЬ И ЗАДАНИЯ) -->
+    <div class="section">
+        <h2>ANTES DE VER EL VIDEO</h2>
+
+        <h3>A. Vocabulario Completo (Español - Ruso)</h3>
+        <p>Изучите эти слова перед просмотром видео. Они помогут вам понять текст.</p>
+        <table class="vocab-table">
+            <thead>
+                <tr>
+                    <th>Español</th>
+                    <th>Русский</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>El imperio</strong></td><td>Империя</td></tr>
+                <tr><td><strong>El gobernante</strong></td><td>Правитель</td></tr>
+                <tr><td><strong>El descendiente</strong></td><td>Потомок</td></tr>
+                <tr><td><strong>La leyenda</strong></td><td>Легенда</td></tr>
+                <tr><td><strong>Fundar</strong></td><td>Основать</td></tr>
+                <tr><td><strong>El sacerdote</strong></td><td>Жрец, священник</td></tr>
+                <tr><td><strong>La clase noble</strong></td><td>Знать, дворянство</td></tr>
+                <tr><td><strong>La custodia</strong></td><td>Хранение, опека</td></tr>
+                <tr><td><strong>El oficio</strong></td><td>Ремесло, занятие</td></tr>
+                <tr><td><strong>El tributo</strong></td><td>Дань, налог</td></tr>
+                <tr><td><strong>El comercio</strong></td><td>Торговля</td></tr>
+                <tr><td><strong>El desempleo</strong></td><td>Безработица</td></tr>
+                <tr><td><strong>Formidable</strong></td><td>Внушительный, грозный</td></tr>
+                <tr><td><strong>Lograr</strong></td><td>Добиться, суметь</td></tr>
+                <tr><td><strong>Convencer</strong></td><td>Убедить</td></tr>
+                <tr><td><strong>El reino</strong></td><td>Королевство</td></tr>
+                <tr><td><strong>La terraza</strong></td><td>Терраса (для земледелия)</td></tr>
+                <tr><td><strong>La calabaza</strong></td><td>Тыква</td></tr>
+                <tr><td><strong>La crianza</strong></td><td>Разведение (животных)</td></tr>
+                <tr><td><strong>El acero</strong></td><td>Сталь</td></tr>
+                <tr><td><strong>El hierro</strong></td><td>Железо</td></tr>
+                <tr><td><strong>El textil</strong></td><td>Текстиль, ткань</td></tr>
+                <tr><td><strong>Tejer</strong></td><td>Ткать, плести</td></tr>
+                <tr><td><strong>La armadura</strong></td><td>Доспехи</td></tr>
+                <tr><td><strong>La barca</strong></td><td>Лодка</td></tr>
+                <tr><td><strong>Adornar</strong></td><td>Украшать</td></tr>
+                <tr><td><strong>La artesanía</strong></td><td>Ремесло, изделие</td></tr>
+                <tr><td><strong>Fundir</strong></td><td>Плавить, переплавлять</td></tr>
+                <tr><td><strong>El pasaje</strong></td><td>Переход, проход</td></tr>
+                <tr><td><strong>El código moral</strong></td><td>Моральный кодекс</td></tr>
+                <tr><td><strong>La momia</strong></td><td>Мумия</td></tr>
+                <tr><td><strong>El sucesor</strong></td><td>Преемник, наследник</td></tr>
+                <tr><td><strong>El consejo</strong></td><td>Совет</td></tr>
+                <tr><td><strong>El lóbulo</strong></td><td>Мочка (уха)</td></tr>
+                <tr><td><strong>El hombro</strong></td><td>Плечо</td></tr>
+                <tr><td><strong>El cráneo</strong></td><td>Череп</td></tr>
+                <tr><td><strong>Alargar</strong></td><td>Удлинять</td></tr>
+                <tr><td><strong>La tradición oral</strong></td><td>Устная традиция</td></tr>
+                <tr><td><strong>El quipu</strong></td><td>Кипу (узелковое письмо)</td></tr>
+                <tr><td><strong>La cuerda</strong></td><td>Верёвка</td></tr>
+                <tr><td><strong>Anudar</strong></td><td>Завязывать узлом</td></tr>
+                <tr><td><strong>El mensajero</strong></td><td>Гонец, посыльный</td></tr>
+                <tr><td><strong>El camino real</strong></td><td>Королевская дорога</td></tr>
+                <tr><td><strong>El terremoto</strong></td><td>Землетрясение</td></tr>
+                <tr><td><strong>Labrar</strong></td><td>Обрабатывать (камень)</td></tr>
+                <tr><td><strong>Encajar</strong></td><td>Вставлять, подходить</td></tr>
+                <tr><td><strong>Aislado</strong></td><td>Изолированный</td></tr>
+                <tr><td><strong>El conquistador</strong></td><td>Завоеватель</td></tr>
+                <tr><td><strong>Toparse con</strong></td><td>Столкнуться с</td></tr>
+                <tr><td><strong>El boato</strong></td><td>Пышность, роскошь</td></tr>
+                <tr><td><strong>La guerra civil</strong></td><td>Гражданская война</td></tr>
+                <tr><td><strong>Aliarse</strong></td><td>Объединяться, вступать в союз</td></tr>
+                <tr><td><strong>La viruela</strong></td><td>Оспа</td></tr>
+                <tr><td><strong>El dominio</strong></td><td>Господство, власть</td></tr>
+                <tr><td><strong>El caudillo</strong></td><td>Вождь, предводитель</td></tr>
+                <tr><td><strong>El revolucionario</strong></td><td>Революционер</td></tr>
+                <tr><td><strong>El quechua</strong></td><td>Кечуа (язык)</td></tr>
+            </tbody>
+        </table>
+
+        <!-- ЗАДАНИЕ 1 НА СЛОВАРЬ (АВТОПРОВЕРКА) -->
+        <div class="task-box">
+            <h4>Tarea 1: Traduce al ruso</h4>
+            <p>Переведите следующие испанские слова на русский язык. Нажмите «Проверить», чтобы свериться.</p>
+            <ol>
+                <li><strong>Lograr</strong> — <input type="text" id="t1-1" placeholder="..."> <span id="res-t1-1"></span></li>
+                <li><strong>Convencer</strong> — <input type="text" id="t1-2" placeholder="..."> <span id="res-t1-2"></span></li>
+                <li><strong>La artesanía</strong> — <input type="text" id="t1-3" placeholder="..."> <span id="res-t1-3"></span></li>
+                <li><strong>El tributo</strong> — <input type="text" id="t1-4" placeholder="..."> <span id="res-t1-4"></span></li>
+                <li><strong>La momia</strong> — <input type="text" id="t1-5" placeholder="..."> <span id="res-t1-5"></span></li>
+                <li><strong>Fundir</strong> — <input type="text" id="t1-6" placeholder="..."> <span id="res-t1-6"></span></li>
+                <li><strong>El caudillo</strong> — <input type="text" id="t1-7" placeholder="..."> <span id="res-t1-7"></span></li>
+                <li><strong>La viruela</strong> — <input type="text" id="t1-8" placeholder="..."> <span id="res-t1-8"></span></li>
+                <li><strong>El trueque</strong> — <input type="text" id="t1-9" placeholder="..."> <span id="res-t1-9"></span></li>
+                <li><strong>La terraza</strong> — <input type="text" id="t1-10" placeholder="..."> <span id="res-t1-10"></span></li>
+            </ol>
+            <button class="check-btn" onclick="checkT1()">Проверить</button>
+            <div id="t1-feedback" class="answer"></div>
+        </div>
+
+        <!-- ЗАДАНИЕ 2 НА СЛОВАРЬ (АВТОПРОВЕРКА) -->
+        <div class="task-box">
+            <h4>Tarea 2: Encuentra la definición</h4>
+            <p>Соотнесите испанское слово с его определением на испанском языке. Впишите букву (A-F) в поле.</p>
+            <div class="match-item">1. <strong>El quipu</strong> <input type="text" id="t2-1" style="width:50px;"> </div>
+            <div class="match-item">2. <strong>La terraza</strong> <input type="text" id="t2-2" style="width:50px;"> </div>
+            <div class="match-item">3. <strong>El trueque</strong> <input type="text" id="t2-3" style="width:50px;"> </div>
+            <div class="match-item">4. <strong>La artesanía</strong> <input type="text" id="t2-4" style="width:50px;"> </div>
+            <div class="match-item">5. <strong>Lograr</strong> <input type="text" id="t2-5" style="width:50px;"> </div>
+            <div class="match-item">6. <strong>Convencer</strong> <input type="text" id="t2-6" style="width:50px;"> </div>
+            <p><em>Opciones (определения):</em></p>
+            <ul style="list-style-type: upper-alpha;">
+                <li>Conseguir o obtener algo que se desea.</li>
+                <li>Sistema de cuerdas anudadas para registrar información.</li>
+                <li>Obtener que alguien cambie de opinión o haga algo.</li>
+                <li>Objeto hecho a mano con habilidad y tradición.</li>
+                <li>Escalón en la montaña para cultivar.</li>
+                <li>Intercambio de productos sin usar dinero.</li>
+            </ul>
+            <button class="check-btn" onclick="checkT2()">Проверить</button>
+            <div id="t2-feedback" class="answer"></div>
+        </div>
+
+        <!-- ЗАДАНИЕ 3 НА СЛОВАРЬ (ДОМАШНЕЕ) -->
+        <div class="homework-box">
+            <h4>Tarea 3: Crea frases con diferentes tiempos verbales (Домашнее задание)</h4>
+            <p><strong>Инструкция:</strong> Выберите <strong>5 слов</strong> из словаря выше. Составьте с каждым словом по одному предложению, используя <strong>разные времена</strong> (Presente, Pretérito Indefinido, Imperfecto, Futuro, Pretérito Perfecto).</p>
+            <p><em>Ejemplo:</em> Los incas <strong>construyeron</strong> Machu Picchu en el siglo XV. (Pretérito Indefinido)</p>
+            <textarea rows="5" placeholder="Escribe aquí tus 5 frases..."></textarea>
+            <p><strong>Отправьте текст с предложениями преподавателю.</strong></p>
+        </div>
+
+        <h3>B. Lluvia de ideas</h3>
+        <div class="task-box">
+            <p>¿Qué sabes sobre la civilización inca (el territorio que ocupaba, cómo era su organización, qué costumbres existían...)? Coméntalo con otras personas de la clase.</p>
+        </div>
+    </div>
+
+    <!-- БЛОК С ВИДЕО (ИСПРАВЛЕНА ОШИБКА 153) -->
+    <div class="section">
+        <h2>VIDEO: ¿Quiénes fueron los Incas?</h2>
+        
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/i4a7ukZxwSs" allowfullscreen></iframe>
+        </div>
+
+        <!-- Предупреждение об ошибке 153 -->
+        <div class="video-fallback">
+            <p>⚠️ <strong>Внимание!</strong> Если вы видите ошибку 153 (YouTube запрещает встраивание этого видео на сторонние сайты из-за авторских прав на музыку в начале), пожалуйста, посмотрите видео напрямую на YouTube по кнопке ниже:</p>
+            <a href="https://www.youtube.com/watch?v=i4a7ukZxwSs" target="_blank">▶ Посмотреть видео на YouTube</a>
+        </div>
+    </div>
+
+    <!-- БЛОК VEMOS EL VIDEO -->
+    <div class="section">
+        <h2>VEMOS EL VIDEO</h2>
+        
+        <div class="task-box">
+            <h3>C. Toma de notas por zonas</h3>
+            <p>Посмотрите видео и заполните каждую зону информацией из видео. Затем нажмите «Показать ответ», чтобы свериться с эталоном.</p>
+
+            <div class="zone">
+                <h4>🌍 Territorio y capital</h4>
+                <textarea placeholder="Escribe aquí..."></textarea>
+                <button class="check-btn" onclick="toggleAnswer('ans-c1')">Показать ответ</button>
+                <div id="ans-c1" class="answer">
+                    <strong>Territorio:</strong> Casi 2 millones de km². Incluía territorios de lo que ahora son Perú, Ecuador, Bolivia, Chile y Argentina.<br>
+                    <strong>Capital:</strong> Cusco.<br>
+                    <strong>Nombre del estado:</strong> Tawantinsuyo (las cuatro regiones).<br>
+                    <strong>Gobernante:</strong> El Inca, considerado descendiente directo de Inti (Dios del Sol).
+                </div>
+            </div>
+
+            <div class="zone">
+                <h4>🏛️ Organización en clases</h4>
+                <textarea placeholder="Escribe aquí..."></textarea>
+                <button class="check-btn" onclick="toggleAnswer('ans-c2')">Показать ответ</button>
+                <div id="ans-c2" class="answer">
+                    <strong>Clases:</strong> Sacerdotes, gobernantes de cada región, clase noble. La mayor parte del pueblo eran grupos de familias llamados <em>ayllu</em>.<br>
+                    <strong>Obligaciones:</strong> Los jóvenes al llegar a la edad adulta debían servir en el ejército.<br>
+                    <strong>Distribución:</strong> Los productos del trabajo se entregaban al gobierno, quien los repartía a todo el pueblo.
+                </div>
+            </div>
+
+            <div class="zone">
+                <h4>💰 Economía y comercio</h4>
+                <textarea placeholder="Escribe aquí..."></textarea>
+                <button class="check-btn" onclick="toggleAnswer('ans-c3')">Показать ответ</button>
+                <div id="ans-c3" class="answer">
+                    <strong>Comercio:</strong> No existía el comercio ni el dinero ni el desempleo.<br>
+                    <strong>Economía:</strong> Basada en el trabajo comunitario y la redistribución.<br>
+                    <strong>Tributo:</strong> Los productos del trabajo se entregaban al gobierno.
+                </div>
+            </div>
+
+            <div class="zone">
+                <h4>🌱 Cultivos</h4>
+                <textarea placeholder="Escribe aquí..."></textarea>
+                <button class="check-btn" onclick="toggleAnswer('ans-c4')">Показать ответ</button>
+                <div id="ans-c4" class="answer">
+                    <strong>Cultivos:</strong> Papa, maíz y calabaza.<br>
+                    <strong>Técnica:</strong> Cultivo por terrazas.<br>
+                    <strong>Animales:</strong> Crianza de alpacas y llamas.
+                </div>
+            </div>
+
+            <div class="zone">
+                <h4>✨ Oro y textil</h4>
+                <textarea placeholder="Escribe aquí..."></textarea>
+                <button class="check-btn" onclick="toggleAnswer('ans-c5')">Показать ответ</button>
+                <div id="ans-c5" class="answer">
+                    <strong>Oro:</strong> Lo usaban para adornar sus templos y realizar maravillosas artesanías. Lástima que los españoles fundieron muchos de estos trabajos para hacer monedas.<br>
+                    <strong>Textil:</strong> Eran expertos en los textiles. Tejían ropa, armaduras, barcas y cuentas. No trabajaban ni el acero ni el hierro.
+                </div>
+            </div>
+
+            <div class="zone">
+                <h4>🏗️ Construcciones</h4>
+                <textarea placeholder="Escribe aquí..."></textarea>
+                <button class="check-btn" onclick="toggleAnswer('ans-c6')">Показать ответ</button>
+                <div id="ans-c6" class="answer">
+                    <strong>Ingeniería:</strong> Excelentes caminos para unir el imperio (Camino Real que unía Cusco con Quito).<br>
+                    <strong>Edificios:</strong> Hechos de piedras labradas que encajaban perfectamente (no se puede meter un cuchillo entre dos).<br>
+                    <strong>Machu Picchu:</strong> Ciudad importante, tan aislada que no se descubrió hasta principios de 1900. Se cree que era donde el Inca se iba de vacaciones.
+                </div>
+            </div>
+
+            <div class="zone">
+                <h4>💀 Muerte</h4>
+                <textarea placeholder="Escribe aquí..."></textarea>
+                <button class="check-btn" onclick="toggleAnswer('ans-c7')">Показать ответ</button>
+                <div id="ans-c7" class="answer">
+                    <strong>Concepto:</strong> La muerte no era más que un pasaje a la siguiente vida. Los que seguían el código moral inca (no robes, no mientas, no seas flojo) llegarían a vivir en un paraíso bajo el calor del sol.<br>
+                    <strong>Momias:</strong> Conservaban las momias de sus gobernantes fallecidos. Sus sucesores les tenían gran respeto y hasta les pedían consejo.
+                </div>
+            </div>
+
+            <div class="zone">
+                <h4>💇 Estética corporal</h4>
+                <textarea placeholder="Escribe aquí..."></textarea>
+                <button class="check-btn" onclick="toggleAnswer('ans-c8')">Показать ответ</button>
+                <div id="ans-c8" class="answer">
+                    <strong>Orejas:</strong> Era común colgarse objetos en los lóbulos de las orejas, haciéndolos llegar hasta los hombros. Por eso los españoles les llamaron "orejones".<br>
+                    <strong>Cabeza:</strong> Sujetaban el cráneo de los niños para lograr que se les alargara.
+                </div>
+            </div>
+
+            <div class="zone">
+                <h4>📜 Escritura y quipús</h4>
+                <textarea placeholder="Escribe aquí..."></textarea>
+                <button class="check-btn" onclick="toggleAnswer('ans-c9')">Показать ответ</button>
+                <div id="ans-c9" class="answer">
+                    <strong>Escritura:</strong> Aparentemente no tenían escritura. Todo su conocimiento era transmitido por tradición oral.<br>
+                    <strong>Quipus:</strong> Tenían quipus, un complejo sistema de cuerdas anudadas con las que llevaban cuentas y registros. También puede ser que sirviera para contar historias, pero nadie sabe con certeza cómo.<br>
+                    <strong>Mensajeros:</strong> Los mensajeros llamados <em>chasky</em> las llevaban como se llevan cartas.
+                </div>
+            </div>
+        </div>
+
+        <div class="task-box">
+            <h3>D. Resumen</h3>
+            <p>Cada uno/a escribe un pequeño texto sobre los incas, para resumir lo que habéis compartido en C. Si lo necesitáis, podéis volver a ver el video.</p>
+            <textarea rows="4" placeholder="Escribe tu resumen aquí..."></textarea>
+        </div>
+    </div>
+
+    <!-- ГРАММАТИКА (РАСШИРЕННАЯ) -->
+    <div class="section">
+        <h2>GRAMÁTICA: LOS TIEMPOS DEL PASADO</h2>
+        <p>En esta sección practicamos los cuatro tiempos pasados: <strong>Pretérito Indefinido</strong>, <strong>Imperfecto</strong>, <strong>Pretérito Perfecto</strong> y <strong>Pluscuamperfecto</strong>.</p>
+
+        <div class="grammar-example">
+            <strong>Recuerda:</strong><br>
+            • <em>Indefinido</em>: acciones puntuales y terminadas (ayer, en 1532, de repente).<br>
+            • <em>Imperfecto</em>: descripciones, costumbres, acciones habituales en el pasado.<br>
+            • <em>Pretérito Perfecto</em>: acciones pasadas con relevancia en el presente (hoy, esta semana, ya, todavía).<br>
+            • <em>Pluscuamperfecto</em>: acción pasada anterior a otra acción pasada (había + participio).
+        </div>
+
+        <!-- ЗАДАНИЕ E (АВТОПРОВЕРКА) -->
+        <div class="task-box">
+            <h3>E. Completa la historia (mezcla de tiempos)</h3>
+            <p>Completa el texto con el verbo en el tiempo correcto. Usa el contexto para decidir. Нажмите «Проверить», чтобы свериться.</p>
+            <p>
+                Los Incas <input type="text" id="e-1" placeholder="(ser)" style="width: 80px;"> una civilización muy avanzada. 
+                Ellos <input type="text" id="e-2" placeholder="(vivir)" style="width: 80px;"> en las montañas de los Andes. 
+                Su capital <input type="text" id="e-3" placeholder="(llamarse)" style="width: 100px;"> Cusco. 
+                El emperador <input type="text" id="e-4" placeholder="(gobernar)" style="width: 100px;"> con mano firme. 
+                Un día, los españoles <input type="text" id="e-5" placeholder="(llegar)" style="width: 80px;"> a América y 
+                <input type="text" id="e-6" placeholder="(cambiar)" style="width: 80px;"> la historia para siempre.
+            </p>
+            <p>
+                Antes de que los españoles <input type="text" id="e-7" placeholder="(llegar)" style="width: 80px;">, 
+                los incas ya <input type="text" id="e-8" placeholder="(construir)" style="width: 100px;"> un gran imperio. 
+                Cuando Pizarro <input type="text" id="e-9" placeholder="(toparse)" style="width: 100px;"> con los incas en 1526, 
+                ellos <input type="text" id="e-10" placeholder="(estar)" style="width: 80px;"> en medio de una guerra civil. 
+                Los hermanos Huáscar y Atahualpa <input type="text" id="e-11" placeholder="(pelear)" style="width: 80px;"> por el trono.
+            </p>
+            <p>
+                Hoy en día, los historiadores <input type="text" id="e-12" placeholder="(estudiar)" style="width: 100px;"> 
+                mucho sobre los incas. <input type="text" id="e-13" placeholder="(Descubrir)" style="width: 100px;"> 
+                que su organización social <input type="text" id="e-14" placeholder="(ser)" style="width: 80px;"> increíblemente eficaz. 
+                Gracias a los quipus, <input type="text" id="e-15" placeholder="(poder)" style="width: 80px;"> 
+                conservar información importante. Sin embargo, nadie <input type="text" id="e-16" placeholder="(saber)" style="width: 80px;"> 
+                con certeza cómo <input type="text" id="e-17" placeholder="(funcionar)" style="width: 100px;"> exactamente ese sistema.
+            </p>
+            <button class="check-btn" onclick="checkE()">Проверить</button>
+            <div id="e-feedback" class="answer"></div>
+        </div>
+
+        <!-- ЗАДАНИЕ F (РАСШИРЕННОЕ, 4 ВРЕМЕНИ, АВТОПРОВЕРКА ПО КАЖДОМУ БЛОКУ) -->
+        <div class="task-box">
+            <h3>F. Transformación (todos los tiempos)</h3>
+            <p>Преобразуйте предложения в указанное время. После каждого блока нажмите «Проверить» для самопроверки.</p>
+
+            <!-- Блок 1: Indefinido -->
+            <div class="grammar-sub">
+                <h5>1. Pretérito Indefinido (простое прошедшее)</h5>
+                <p>1.1. Los incas construyen Machu Picchu. → Los incas <input type="text" id="f-1" style="width: 160px;"> Machu Picchu.</p>
+                <p>1.2. El emperador usa un quipu. → El emperador <input type="text" id="f-2" style="width: 160px;"> un quipu.</p>
+                <p>1.3. Ellos cultivan maíz. → Ellos <input type="text" id="f-3" style="width: 160px;"> maíz.</p>
+                <p>1.4. Los españoles llegan a América. → Los españoles <input type="text" id="f-4" style="width: 160px;"> a América.</p>
+                <button class="check-btn" onclick="checkF1()">Проверить</button>
+                <div id="f1-feedback" class="answer feedback-sub"></div>
+            </div>
+
+            <!-- Блок 2: Imperfecto -->
+            <div class="grammar-sub">
+                <h5>2. Imperfecto (описательное прошедшее)</h5>
+                <p>2.1. Los incas viven en las montañas. → Los incas <input type="text" id="f-5" style="width: 160px;"> en las montañas.</p>
+                <p>2.2. El emperador gobierna con mano firme. → El emperador <input type="text" id="f-6" style="width: 160px;"> con mano firme.</p>
+                <p>2.3. La capital se llama Cusco. → La capital <input type="text" id="f-7" style="width: 160px;"> Cusco.</p>
+                <p>2.4. Ellos practican el cultivo por terrazas. → Ellos <input type="text" id="f-8" style="width: 160px;"> el cultivo por terrazas.</p>
+                <button class="check-btn" onclick="checkF2()">Проверить</button>
+                <div id="f2-feedback" class="answer feedback-sub"></div>
+            </div>
+
+            <!-- Блок 3: Pretérito Perfecto -->
+            <div class="grammar-sub">
+                <h5>3. Pretérito Perfecto (настоящее совершенное)</h5>
+                <p>3.1. Los historiadores estudian mucho sobre los incas. → Los historiadores <input type="text" id="f-9" style="width: 200px;"> mucho sobre los incas.</p>
+                <p>3.2. Descubren que su organización es eficaz. → <input type="text" id="f-10" style="width: 200px;"> que su organización es eficaz.</p>
+                <p>3.3. Los incas dejan palabras en quechua. → Los incas <input type="text" id="f-11" style="width: 200px;"> palabras en quechua.</p>
+                <p>3.4. Nadie sabe cómo funciona el quipu. → Nadie <input type="text" id="f-12" style="width: 200px;"> cómo funciona el quipu.</p>
+                <button class="check-btn" onclick="checkF3()">Проверить</button>
+                <div id="f3-feedback" class="answer feedback-sub"></div>
+            </div>
+
+            <!-- Блок 4: Pluscuamperfecto -->
+            <div class="grammar-sub">
+                <h5>4. Pluscuamperfecto (предпрошедшее)</h5>
+                <p>4.1. Los incas construyen un gran imperio antes de la llegada de los españoles. → Los incas <input type="text" id="f-13" style="width: 220px;"> un gran imperio antes de la llegada de los españoles.</p>
+                <p>4.2. Los españoles funden el oro antes de hacer monedas. → Los españoles <input type="text" id="f-14" style="width: 220px;"> el oro antes de hacer monedas.</p>
+                <p>4.3. Ellos conservan las momias antes de que llegaran los españoles. → Ellos <input type="text" id="f-15" style="width: 220px;"> las momias antes de que llegaran los españoles.</p>
+                <p>4.4. Pizarro se topa con los incas después de que ellos pelean por el trono. → Pizarro se topó con los incas después de que ellos <input type="text" id="f-16" style="width: 220px;"> por el trono.</p>
+                <button class="check-btn" onclick="checkF4()">Проверить</button>
+                <div id="f4-feedback" class="answer feedback-sub"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DESPUÉS DE VER EL VIDEO -->
+    <div class="section">
+        <h2>DESPUÉS DE VER EL VIDEO</h2>
+        
+        <div class="task-box">
+            <h3>G. Reflexión (AUDIO)</h3>
+            <div class="audio-instruction">
+                <p><strong>Задание:</strong> Запишите аудио (1–2 минуты) на испанском языке. Ответьте на вопросы:</p>
+                <ul>
+                    <li>¿Qué información no conocías sobre los incas?</li>
+                    <li>¿Te ha sorprendido algo? ¿Por qué?</li>
+                </ul>
+                <p><em>Отправьте аудиофайл преподавателю.</em></p>
+            </div>
+        </div>
+
+        <div class="task-box">
+            <h3>H. Tu país en 1526 (SOLO ESCRITO)</h3>
+            <p>¿Cómo era la vida en tu país o región en 1526? Escribe un pequeño texto (150–200 palabras) para describir esa época histórica. Usa al menos 3 tiempos pasados diferentes.</p>
+            <textarea rows="6" placeholder="Escribe sobre tu región en 1526..."></textarea>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            if (el.classList.contains('show')) {
+                el.classList.remove('show');
+            } else {
+                el.classList.add('show');
+            }
+        }
+
+        // Проверка задания 1
+        function checkT1() {
+            const answers = [
+                "добиться", "убедить", "ремесло", "дань", "мумия", 
+                "плавить", "вождь", "оспа", "обмен", "терраса"
+            ];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 1; i <= total; i++) {
+                const input = document.getElementById("t1-" + i);
+                const val = input.value.trim().toLowerCase();
+                const isCorrect = val.includes(answers[i-1]) || answers[i-1].includes(val);
+                if (isCorrect) {
+                    correct++;
+                    input.style.borderColor = "#2ecc71";
+                } else {
+                    input.style.borderColor = "#e74c3c";
+                }
+            }
+            document.getElementById("t1-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `Правильные ответы: ${answers.join(", ")}`;
+            document.getElementById("t1-feedback").classList.add("show");
+        }
+
+        // Проверка задания 2
+        function checkT2() {
+            const answers = ["B", "E", "F", "D", "A", "C"];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 1; i <= total; i++) {
+                const input = document.getElementById("t2-" + i);
+                const val = input.value.trim().toUpperCase();
+                if (val === answers[i-1]) {
+                    correct++;
+                    input.style.borderColor = "#2ecc71";
+                } else {
+                    input.style.borderColor = "#e74c3c";
+                }
+            }
+            document.getElementById("t2-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `Правильные ответы: 1-B, 2-E, 3-F, 4-D, 5-A, 6-C`;
+            document.getElementById("t2-feedback").classList.add("show");
+        }
+
+        // Проверка задания E
+        function checkE() {
+            const answers = [
+                "eran", "vivían", "se llamaba", "gobernaba", "llegaron", "cambiaron",
+                "llegaran", "habían construido", "se topó", "estaban", "peleaban",
+                "han estudiado", "Han descubierto", "era", "pudieron", "sabe", "funcionaba"
+            ];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 1; i <= total; i++) {
+                const input = document.getElementById("e-" + i);
+                const val = input.value.trim().toLowerCase();
+                const isCorrect = val === answers[i-1].toLowerCase() || 
+                                  val.includes(answers[i-1].toLowerCase()) || 
+                                  answers[i-1].toLowerCase().includes(val);
+                if (isCorrect) {
+                    correct++;
+                    input.style.borderColor = "#2ecc71";
+                } else {
+                    input.style.borderColor = "#e74c3c";
+                }
+            }
+            document.getElementById("e-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `<strong>Правильные ответы:</strong><br>` +
+                `1. eran, 2. vivían, 3. se llamaba, 4. gobernaba, 5. llegaron, 6. cambiaron,<br>` +
+                `7. llegaran, 8. habían construido, 9. se topó, 10. estaban, 11. peleaban,<br>` +
+                `12. han estudiado, 13. Han descubierto, 14. era, 15. pudieron, 16. sabe, 17. funcionaba`;
+            document.getElementById("e-feedback").classList.add("show");
+        }
+
+        // Проверка блока F1 (Indefinido)
+        function checkF1() {
+            const answers = ["construyeron", "usó", "cultivaron", "llegaron"];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 1; i <= total; i++) {
+                const input = document.getElementById("f-" + i);
+                const val = input.value.trim().toLowerCase();
+                const isCorrect = val === answers[i-1].toLowerCase() || 
+                                  val.includes(answers[i-1].toLowerCase()) || 
+                                  answers[i-1].toLowerCase().includes(val);
+                if (isCorrect) {
+                    correct++;
+                    input.style.borderColor = "#2ecc71";
+                } else {
+                    input.style.borderColor = "#e74c3c";
+                }
+            }
+            document.getElementById("f1-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `Правильные ответы: construyeron, usó, cultivaron, llegaron`;
+            document.getElementById("f1-feedback").classList.add("show");
+        }
+
+        // Проверка блока F2 (Imperfecto)
+        function checkF2() {
+            const answers = ["vivían", "gobernaba", "se llamaba", "practicaban"];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 1; i <= total; i++) {
+                const input = document.getElementById("f-" + (i + 4));
+                const val = input.value.trim().toLowerCase();
+                const isCorrect = val === answers[i-1].toLowerCase() || 
+                                  val.includes(answers[i-1].toLowerCase()) || 
+                                  answers[i-1].toLowerCase().includes(val);
+                if (isCorrect) {
+                    correct++;
+                    input.style.borderColor = "#2ecc71";
+                } else {
+                    input.style.borderColor = "#e74c3c";
+                }
+            }
+            document.getElementById("f2-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `Правильные ответы: vivían, gobernaba, se llamaba, practicaban`;
+            document.getElementById("f2-feedback").classList.add("show");
+        }
+
+        // Проверка блока F3 (Pretérito Perfecto)
+        function checkF3() {
+            const answers = ["han estudiado", "Han descubierto", "han dejado", "ha sabido"];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 1; i <= total; i++) {
+                const input = document.getElementById("f-" + (i + 8));
+                const val = input.value.trim().toLowerCase();
+                const isCorrect = val === answers[i-1].toLowerCase() || 
+                                  val.includes(answers[i-1].toLowerCase()) || 
+                                  answers[i-1].toLowerCase().includes(val);
+                if (isCorrect) {
+                    correct++;
+                    input.style.borderColor = "#2ecc71";
+                } else {
+                    input.style.borderColor = "#e74c3c";
+                }
+            }
+            document.getElementById("f3-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `Правильные ответы: han estudiado, Han descubierto, han dejado, ha sabido`;
+            document.getElementById("f3-feedback").classList.add("show");
+        }
+
+        // Проверка блока F4 (Pluscuamperfecto)
+        function checkF4() {
+            const answers = ["habían construido", "habían fundido", "habían conservado", "habían peleado"];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 1; i <= total; i++) {
+                const input = document.getElementById("f-" + (i + 12));
+                const val = input.value.trim().toLowerCase();
+                const isCorrect = val === answers[i-1].toLowerCase() || 
+                                  val.includes(answers[i-1].toLowerCase()) || 
+                                  answers[i-1].toLowerCase().includes(val);
+                if (isCorrect) {
+                    correct++;
+                    input.style.borderColor = "#2ecc71";
+                } else {
+                    input.style.borderColor = "#e74c3c";
+                }
+            }
+            document.getElementById("f4-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `Правильные ответы: habían construido, habían fundido, habían conservado, habían peleado`;
+            document.getElementById("f4-feedback").classList.add("show");
+        }
+    </script>
+
+</body>
+</html>
