@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Del Revés - Las emociones básicas | Workbook</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 10px;
+        }
+        h2 {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #c0392b;
+            margin-top: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-fallback {
+            background-color: #fff3e0;
+            border: 2px dashed #e67e22;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .video-fallback a {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+        .video-fallback a:hover {
+            background-color: #c0392b;
+        }
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        .vocab-table th, .vocab-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .vocab-table th {
+            background-color: #34495e;
+            color: white;
+        }
+        .vocab-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .task-box {
+            background-color: #fff3e0;
+            border-left: 5px solid #e67e22;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .task-box h4 {
+            margin-top: 0;
+            color: #d35400;
+        }
+        input[type="text"], textarea, select {
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        input[type="text"] {
+            width: 180px;
+        }
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .check-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 1em;
+        }
+        .check-btn:hover {
+            background-color: #2980b9;
+        }
+        .answer {
+            display: none;
+            background-color: #e8f8f5;
+            border-left: 5px solid #1abc9c;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 0 5px 5px 0;
+            font-size: 0.95em;
+        }
+        .answer.show {
+            display: block;
+        }
+        .highlight {
+            background-color: #fffacd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 2px;
+        }
+        .match-item {
+            margin-bottom: 8px;
+        }
+        .grammar-example {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+        .audio-instruction {
+            background-color: #e8f4f8;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            border-radius: 0 5px 5px 0;
+        }
+        .grammar-sub {
+            background-color: #fef9e7;
+            border-left: 4px solid #f1c40f;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .grammar-sub h5 {
+            margin: 0 0 8px 0;
+            color: #b7950b;
+        }
+        .feedback-sub {
+            margin-top: 8px;
+            font-size: 0.9em;
+        }
+        .homework-box {
+            background-color: #e8f8f5;
+            border-left: 5px solid #1abc9c;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .homework-box h4 {
+            margin-top: 0;
+            color: #16a085;
+        }
+        .emotion-icon {
+            font-size: 1.5em;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>DEL REVÉS: LAS EMOCIONES BÁSICAS</h1>
+    <p style="text-align:center; font-size:1.1em;">Workbook para la clase de español</p>
+
+    <!-- БЛОК ANTES DE VER -->
+    <div class="section">
+        <h2>ANTES DE VER EL VIDEO</h2>
+
+        <h3>A. Vocabulario de las emociones</h3>
+        <p>Изучите эти слова перед просмотром. Они помогут вам понять трейлер.</p>
+        <table class="vocab-table">
+            <thead>
+                <tr>
+                    <th>Español</th>
+                    <th>Русский</th>
+                    <th>Emoji</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>La alegría</strong></td><td>Радость</td><td>😊</td></tr>
+                <tr><td><strong>La tristeza</strong></td><td>Грусть</td><td>😢</td></tr>
+                <tr><td><strong>El miedo</strong></td><td>Страх</td><td>😨</td></tr>
+                <tr><td><strong>La ira / El enfado</strong></td><td>Гнев / Злость</td><td>😠</td></tr>
+                <tr><td><strong>El asco</strong></td><td>Отвращение</td><td>🤢</td></tr>
+                <tr><td><strong>La sorpresa</strong></td><td>Удивление</td><td>😲</td></tr>
+                <tr><td><strong>La emoción</strong></td><td>Эмоция</td><td>💓</td></tr>
+                <tr><td><strong>El sentimiento</strong></td><td>Чувство</td><td>💭</td></tr>
+                <tr><td><strong>El recuerdo</strong></td><td>Воспоминание</td><td>🧠</td></tr>
+                <tr><td><strong>La mente</strong></td><td>Разум, ум</td><td>🧠</td></tr>
+                <tr><td><strong>El pensamiento</strong></td><td>Мысль</td><td>💡</td></tr>
+                <tr><td><strong>El cerebro</strong></td><td>Мозг</td><td>🧠</td></tr>
+                <tr><td><strong>La personalidad</strong></td><td>Личность</td><td>👤</td></tr>
+                <tr><td><strong>El carácter</strong></td><td>Характер</td><td>🎭</td></tr>
+                <tr><td><strong>El estado de ánimo</strong></td><td>Настроение</td><td>🌤️</td></tr>
+                <tr><td><strong>Sentir</strong></td><td>Чувствовать</td><td>💗</td></tr>
+                <tr><td><strong>Expresar</strong></td><td>Выражать</td><td>🗣️</td></tr>
+                <tr><td><strong>Gestionar</strong></td><td>Управлять (эмоциями)</td><td>⚖️</td></tr>
+                <tr><td><strong>Superar</strong></td><td>Преодолевать</td><td>💪</td></tr>
+                <tr><td><strong>Afrontar</strong></td><td>Справляться, противостоять</td><td>🛡️</td></tr>
+            </tbody>
+        </table>
+
+        <!-- ЗАДАНИЕ 1 -->
+        <div class="task-box">
+            <h4>Tarea 1: Traduce al ruso</h4>
+            <p>Переведите следующие слова на русский язык. Нажмите «Проверить», чтобы свериться.</p>
+            <ol>
+                <li><strong>La alegría</strong> — <input type="text" id="t1-1" placeholder="..."> <span id="res-t1-1"></span></li>
+                <li><strong>El miedo</strong> — <input type="text" id="t1-2" placeholder="..."> <span id="res-t1-2"></span></li>
+                <li><strong>La ira</strong> — <input type="text" id="t1-3" placeholder="..."> <span id="res-t1-3"></span></li>
+                <li><strong>El asco</strong> — <input type="text" id="t1-4" placeholder="..."> <span id="res-t1-4"></span></li>
+                <li><strong>El recuerdo</strong> — <input type="text" id="t1-5" placeholder="..."> <span id="res-t1-5"></span></li>
+                <li><strong>El estado de ánimo</strong> — <input type="text" id="t1-6" placeholder="..."> <span id="res-t1-6"></span></li>
+                <li><strong>Sentir</strong> — <input type="text" id="t1-7" placeholder="..."> <span id="res-t1-7"></span></li>
+                <li><strong>Superar</strong> — <input type="text" id="t1-8" placeholder="..."> <span id="res-t1-8"></span></li>
+            </ol>
+            <button class="check-btn" onclick="checkT1()">Проверить</button>
+            <div id="t1-feedback" class="answer"></div>
+        </div>
+
+        <!-- ЗАДАНИЕ 2 -->
+        <div class="task-box">
+            <h4>Tarea 2: Encuentra la definición</h4>
+            <p>Соотнесите испанское слово с его определением на испанском языке. Впишите букву (A-F) в поле.</p>
+            <div class="match-item">1. <strong>La alegría</strong> <input type="text" id="t2-1" style="width:50px;"> </div>
+            <div class="match-item">2. <strong>La tristeza</strong> <input type="text" id="t2-2" style="width:50px;"> </div>
+            <div class="match-item">3. <strong>El miedo</strong> <input type="text" id="t2-3" style="width:50px;"> </div>
+            <div class="match-item">4. <strong>La ira</strong> <input type="text" id="t2-4" style="width:50px;"> </div>
+            <div class="match-item">5. <strong>El asco</strong> <input type="text" id="t2-5" style="width:50px;"> </div>
+            <div class="match-item">6. <strong>La sorpresa</strong> <input type="text" id="t2-6" style="width:50px;"> </div>
+            <p><em>Opciones (определения):</em></p>
+            <ul style="list-style-type: upper-alpha;">
+                <li>Emoción que sentimos cuando algo nos parece desagradable o repugnante.</li>
+                <li>Emoción que sentimos cuando estamos contentos y felices.</li>
+                <li>Emoción que sentimos cuando algo nos da miedo o nos asusta.</li>
+                <li>Emoción que sentimos cuando algo inesperado ocurre.</li>
+                <li>Emoción que sentimos cuando estamos enfadados o enojados.</li>
+                <li>Emoción que sentimos cuando estamos melancólicos o desanimados.</li>
+            </ul>
+            <button class="check-btn" onclick="checkT2()">Проверить</button>
+            <div id="t2-feedback" class="answer"></div>
+        </div>
+
+        <h3>B. Lluvia de ideas</h3>
+        <div class="task-box">
+            <p>¿Conoces la película «Del Revés» (Inside Out)? ¿Qué emociones aparecen en ella? ¿Crees que las emociones son importantes en nuestra vida? Coméntalo con tus compañeros.</p>
+        </div>
+    </div>
+
+    <!-- БЛОК С ВИДЕО -->
+    <div class="section">
+        <h2>VIDEO: Del Revés - Las emociones básicas</h2>
+        
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/-K-J2pW-kXw" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-fallback">
+            <p>⚠️ <strong>Aviso:</strong> Si el video no se reproduce aquí, ábrelo directamente en YouTube:</p>
+            <a href="https://www.youtube.com/watch?v=-K-J2pW-kXw" target="_blank">▶ Ver video en YouTube</a>
+        </div>
+    </div>
+
+    <!-- БЛОК VEMOS EL VIDEO -->
+    <div class="section">
+        <h2>VEMOS EL VIDEO</h2>
+        
+        <div class="task-box">
+            <h3>C. Comprensión del trailer</h3>
+            <p>Mira el trailer y responde a las preguntas. Después, pulsa «Проверить», чтобы свериться.</p>
+
+            <div class="grammar-sub">
+                <h5>1. ¿Qué emociones aparecen en el trailer?</h5>
+                <p>Escribe las emociones que veas (en español).</p>
+                <textarea id="c1" rows="2" placeholder="Escribe aquí..."></textarea>
+                <button class="check-btn" onclick="checkC1()">Проверить</button>
+                <div id="c1-feedback" class="answer feedback-sub"></div>
+            </div>
+
+            <div class="grammar-sub">
+                <h5>2. ¿Quién es la protagonista de la película?</h5>
+                <p>Escribe el nombre de la niña protagonista.</p>
+                <input type="text" id="c2" placeholder="...">
+                <button class="check-btn" onclick="checkC2()">Проверить</button>
+                <div id="c2-feedback" class="answer feedback-sub"></div>
+            </div>
+
+            <div class="grammar-sub">
+                <h5>3. ¿Qué emoción lidera el grupo?</h5>
+                <p>Escribe el nombre de la emoción principal.</p>
+                <input type="text" id="c3" placeholder="...">
+                <button class="check-btn" onclick="checkC3()">Проверить</button>
+                <div id="c3-feedback" class="answer feedback-sub"></div>
+            </div>
+
+            <div class="grammar-sub">
+                <h5>4. ¿Qué problema tiene Riley?</h5>
+                <p>Elige la opción correcta.</p>
+                <select id="c4">
+                    <option value="">-- Selecciona --</option>
+                    <option value="A">Se muda a otra ciudad y cambia de escuela.</option>
+                    <option value="B">Pierde a su mascota.</option>
+                    <option value="C">Se pelea con su mejor amiga.</option>
+                    <option value="D">Se rompe un brazo.</option>
+                </select>
+                <button class="check-btn" onclick="checkC4()">Проверить</button>
+                <div id="c4-feedback" class="answer feedback-sub"></div>
+            </div>
+
+            <div class="grammar-sub">
+                <h5>5. ¿Dónde viven las emociones?</h5>
+                <p>Elige la opción correcta.</p>
+                <select id="c5">
+                    <option value="">-- Selecciona --</option>
+                    <option value="A">En el corazón de Riley.</option>
+                    <option value="B">En el cerebro de Riley.</option>
+                    <option value="C">En la casa de Riley.</option>
+                    <option value="D">En la escuela de Riley.</option>
+                </select>
+                <button class="check-btn" onclick="checkC5()">Проверить</button>
+                <div id="c5-feedback" class="answer feedback-sub"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ГРАММАТИКА -->
+    <div class="section">
+        <h2>GRAMÁTICA: SER vs. ESTAR con emociones</h2>
+        <p>En español, usamos <strong>ser</strong> para describir la personalidad (carácter) y <strong>estar</strong> para describir estados de ánimo temporales.</p>
+
+        <div class="grammar-example">
+            <strong>Recuerda:</strong><br>
+            • <em>Ser</em> + adjetivo: característica permanente → <em>Riley <strong>es</strong> una niña alegre.</em><br>
+            • <em>Estar</em> + adjetivo: estado temporal → <em>Riley <strong>está</strong> triste hoy.</em>
+        </div>
+
+        <div class="task-box">
+            <h3>E. Completa con SER o ESTAR</h3>
+            <p>Completa las frases con la forma correcta de <em>ser</em> o <em>estar</em>. Нажмите «Проверить», чтобы свериться.</p>
+            <p>
+                1. Riley <input type="text" id="e-1" placeholder="(ser/estar)" style="width: 120px;"> una niña muy alegre. 
+                2. Hoy Riley <input type="text" id="e-2" placeholder="(ser/estar)" style="width: 120px;"> triste porque echa de menos a sus amigos.
+            </p>
+            <p>
+                3. La emoción de la Alegría <input type="text" id="e-3" placeholder="(ser/estar)" style="width: 120px;"> muy optimista. 
+                4. El Miedo <input type="text" id="e-4" placeholder="(ser/estar)" style="width: 120px;"> asustado en este momento.
+            </p>
+            <p>
+                5. La Ira <input type="text" id="e-5" placeholder="(ser/estar)" style="width: 120px;"> una emoción básica. 
+                6. Las emociones <input type="text" id="e-6" placeholder="(ser/estar)" style="width: 120px;"> en el cerebro de Riley.
+            </p>
+            <button class="check-btn" onclick="checkE()">Проверить</button>
+            <div id="e-feedback" class="answer"></div>
+        </div>
+
+        <div class="task-box">
+            <h3>F. Transformación (todos los tiempos)</h3>
+            <p>Преобразуйте предложения в указанное время. После каждого блока нажмите «Проверить».</p>
+
+            <div class="grammar-sub">
+                <h5>1. Pretérito Indefinido (простое прошедшее)</h5>
+                <p>1.1. Riley se muda a otra ciudad. → Riley <input type="text" id="f-1" style="width: 160px;"> a otra ciudad.</p>
+                <p>1.2. Ella siente mucha tristeza. → Ella <input type="text" id="f-2" style="width: 160px;"> mucha tristeza.</p>
+                <p>1.3. Las emociones la ayudan. → Las emociones <input type="text" id="f-3" style="width: 160px;"> la ayudan.</p>
+                <p>1.4. Alegría intenta mantener la calma. → Alegría <input type="text" id="f-4" style="width: 160px;"> mantener la calma.</p>
+                <button class="check-btn" onclick="checkF1()">Проверить</button>
+                <div id="f1-feedback" class="answer feedback-sub"></div>
+            </div>
+
+            <div class="grammar-sub">
+                <h5>2. Imperfecto (описательное прошедшее)</h5>
+                <p>2.1. Riley era una niña feliz. → Riley <input type="text" id="f-5" style="width: 160px;"> una niña feliz.</p>
+                <p>2.2. Las emociones vivían en su mente. → Las emociones <input type="text" id="f-6" style="width: 160px;"> en su mente.</p>
+                <p>2.3. Ella jugaba al hockey. → Ella <input type="text" id="f-7" style="width: 160px;"> al hockey.</p>
+                <p>2.4. Sus padres la apoyaban. → Sus padres la <input type="text" id="f-8" style="width: 160px;">.</p>
+                <button class="check-btn" onclick="checkF2()">Проверить</button>
+                <div id="f2-feedback" class="answer feedback-sub"></div>
+            </div>
+
+            <div class="grammar-sub">
+                <h5>3. Pretérito Perfecto (настоящее совершенное)</h5>
+                <p>3.1. Riley ha cambiado de ciudad. → Riley <input type="text" id="f-9" style="width: 200px;"> de ciudad.</p>
+                <p>3.2. Las emociones han trabajado mucho. → Las emociones <input type="text" id="f-10" style="width: 200px;"> mucho.</p>
+                <p>3.3. Ella ha sentido tristeza. → Ella <input type="text" id="f-11" style="width: 200px;"> tristeza.</p>
+                <p>3.4. La Alegría ha intentado ayudar. → La Alegría <input type="text" id="f-12" style="width: 200px;"> ayudar.</p>
+                <button class="check-btn" onclick="checkF3()">Проверить</button>
+                <div id="f3-feedback" class="answer feedback-sub"></div>
+            </div>
+
+            <div class="grammar-sub">
+                <h5>4. Pluscuamperfecto (предпрошедшее)</h5>
+                <p>4.1. Antes de mudarse, Riley había vivido en Minnesota. → Antes de mudarse, Riley <input type="text" id="f-13" style="width: 220px;"> en Minnesota.</p>
+                <p>4.2. Las emociones habían estado con ella desde su nacimiento. → Las emociones <input type="text" id="f-14" style="width: 220px;"> con ella desde su nacimiento.</p>
+                <p>4.3. Ella había sido muy feliz antes del cambio. → Ella <input type="text" id="f-15" style="width: 220px;"> muy feliz antes del cambio.</p>
+                <p>4.4. Sus padres habían decidido mudarse por trabajo. → Sus padres <input type="text" id="f-16" style="width: 220px;"> mudarse por trabajo.</p>
+                <button class="check-btn" onclick="checkF4()">Проверить</button>
+                <div id="f4-feedback" class="answer feedback-sub"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DESPUÉS DE VER EL VIDEO -->
+    <div class="section">
+        <h2>DESPUÉS DE VER EL VIDEO</h2>
+        
+        <div class="task-box">
+            <h3>G. Reflexión (AUDIO)</h3>
+            <div class="audio-instruction">
+                <p><strong>Задание:</strong> Запишите аудио (1–2 минуты) на испанском языке. Ответьте на вопросы:</p>
+                <ul>
+                    <li>¿Qué emoción te representa más? ¿Por qué?</li>
+                    <li>¿Crees que todas las emociones son necesarias? ¿Por qué?</li>
+                </ul>
+                <p><em>Отправьте аудиофайл преподавателю.</em></p>
+            </div>
+        </div>
+
+        <div class="task-box">
+            <h3>H. Tu emocionario (SOLO ESCRITO)</h3>
+            <p>Escribe un pequeño texto (100–150 palabras) describiendo un día en el que sentiste muchas emociones diferentes. Usa al menos 5 emociones del vocabulario y 3 tiempos pasados diferentes.</p>
+            <textarea rows="6" placeholder="Escribe sobre tu día..."></textarea>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            if (el.classList.contains('show')) {
+                el.classList.remove('show');
+            } else {
+                el.classList.add('show');
+            }
+        }
+
+        // Проверка T1
+        function checkT1() {
+            const answers = [
+                "радость", "страх", "гнев", "отвращение", "воспоминание", 
+                "настроение", "чувствовать", "преодолевать"
+            ];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 1; i <= total; i++) {
+                const input = document.getElementById("t1-" + i);
+                const val = input.value.trim().toLowerCase();
+                const isCorrect = val.includes(answers[i-1]) || answers[i-1].includes(val);
+                if (isCorrect) {
+                    correct++;
+                    input.style.borderColor = "#2ecc71";
+                } else {
+                    input.style.borderColor = "#e74c3c";
+                }
+            }
+            document.getElementById("t1-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `Правильные ответы: ${answers.join(", ")}`;
+            document.getElementById("t1-feedback").classList.add("show");
+        }
+
+        // Проверка T2
+        function checkT2() {
+            const answers = ["B", "F", "C", "E", "A", "D"];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 1; i <= total; i++) {
+                const input = document.getElementById("t2-" + i);
+                const val = input.value.trim().toUpperCase();
+                if (val === answers[i-1]) {
+                    correct++;
+                    input.style.borderColor = "#2ecc71";
+                } else {
+                    input.style.borderColor = "#e74c3c";
+                }
+            }
+            document.getElementById("t2-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `Правильные ответы: 1-B, 2-F, 3-C, 4-E, 5-A, 6-D`;
+            document.getElementById("t2-feedback").classList.add("show");
+        }
+
+        // Проверка C1
+        function checkC1() {
+            const answers = ["alegría", "tristeza", "miedo", "ira", "asco", "enfado"];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 0; i < total; i++) {
+                const input = document.getElementById("c1");
+                const val = input.value.toLowerCase();
+                const isCorrect = val.includes(answers[i]);
+                if (isCorrect) {
+                    correct++;
+                }
+            }
+            document.getElementById("c1-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `Правильные ответы: Alegría, Tristeza, Miedo, Ira, Asco, Enfado`;
+            document.getElementById("c1-feedback").classList.add("show");
+        }
+
+        // Проверка C2
+        function checkC2() {
+            const input = document.getElementById("c2");
+            const val = input.value.trim().toLowerCase();
+            const isCorrect = val.includes("riley");
+            if (isCorrect) {
+                input.style.borderColor = "#2ecc71";
+            } else {
+                input.style.borderColor = "#e74c3c";
+            }
+            document.getElementById("c2-feedback").innerHTML = 
+                `Правильный ответ: Riley`;
+            document.getElementById("c2-feedback").classList.add("show");
+        }
+
+        // Проверка C3
+        function checkC3() {
+            const input = document.getElementById("c3");
+            const val = input.value.trim().toLowerCase();
+            const isCorrect = val.includes("alegría");
+            if (isCorrect) {
+                input.style.borderColor = "#2ecc71";
+            } else {
+                input.style.borderColor = "#e74c3c";
+            }
+            document.getElementById("c3-feedback").innerHTML = 
+                `Правильный ответ: Alegría`;
+            document.getElementById("c3-feedback").classList.add("show");
+        }
+
+        // Проверка C4
+        function checkC4() {
+            const select = document.getElementById("c4");
+            const val = select.value;
+            const isCorrect = val === "A";
+            if (isCorrect) {
+                select.style.borderColor = "#2ecc71";
+            } else {
+                select.style.borderColor = "#e74c3c";
+            }
+            document.getElementById("c4-feedback").innerHTML = 
+                `Правильный ответ: A) Se muda a otra ciudad y cambia de escuela.`;
+            document.getElementById("c4-feedback").classList.add("show");
+        }
+
+        // Проверка C5
+        function checkC5() {
+            const select = document.getElementById("c5");
+            const val = select.value;
+            const isCorrect = val === "B";
+            if (isCorrect) {
+                select.style.borderColor = "#2ecc71";
+            } else {
+                select.style.borderColor = "#e74c3c";
+            }
+            document.getElementById("c5-feedback").innerHTML = 
+                `Правильный ответ: B) En el cerebro de Riley.`;
+            document.getElementById("c5-feedback").classList.add("show");
+        }
+
+        // Проверка E
+        function checkE() {
+            const answers = ["es", "está", "es", "está", "es", "están"];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 1; i <= total; i++) {
+                const input = document.getElementById("e-" + i);
+                const val = input.value.trim().toLowerCase();
+                const isCorrect = val === answers[i-1].toLowerCase();
+                if (isCorrect) {
+                    correct++;
+                    input.style.borderColor = "#2ecc71";
+                } else {
+                    input.style.borderColor = "#e74c3c";
+                }
+            }
+            document.getElementById("e-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `Правильные ответы: es, está, es, está, es, están`;
+            document.getElementById("e-feedback").classList.add("show");
+        }
+
+        // Проверка F1
+        function checkF1() {
+            const answers = ["se mudó", "sintió", "ayudaron", "intentó"];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 1; i <= total; i++) {
+                const input = document.getElementById("f-" + i);
+                const val = input.value.trim().toLowerCase();
+                const isCorrect = val === answers[i-1].toLowerCase() || 
+                                  val.includes(answers[i-1].toLowerCase());
+                if (isCorrect) {
+                    correct++;
+                    input.style.borderColor = "#2ecc71";
+                } else {
+                    input.style.borderColor = "#e74c3c";
+                }
+            }
+            document.getElementById("f1-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `Правильные ответы: se mudó, sintió, ayudaron, intentó`;
+            document.getElementById("f1-feedback").classList.add("show");
+        }
+
+        // Проверка F2
+        function checkF2() {
+            const answers = ["era", "vivían", "jugaba", "apoyaban"];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 1; i <= total; i++) {
+                const input = document.getElementById("f-" + (i + 4));
+                const val = input.value.trim().toLowerCase();
+                const isCorrect = val === answers[i-1].toLowerCase() || 
+                                  val.includes(answers[i-1].toLowerCase());
+                if (isCorrect) {
+                    correct++;
+                    input.style.borderColor = "#2ecc71";
+                } else {
+                    input.style.borderColor = "#e74c3c";
+                }
+            }
+            document.getElementById("f2-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `Правильные ответы: era, vivían, jugaba, apoyaban`;
+            document.getElementById("f2-feedback").classList.add("show");
+        }
+
+        // Проверка F3
+        function checkF3() {
+            const answers = ["ha cambiado", "han trabajado", "ha sentido", "ha intentado"];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 1; i <= total; i++) {
+                const input = document.getElementById("f-" + (i + 8));
+                const val = input.value.trim().toLowerCase();
+                const isCorrect = val === answers[i-1].toLowerCase() || 
+                                  val.includes(answers[i-1].toLowerCase());
+                if (isCorrect) {
+                    correct++;
+                    input.style.borderColor = "#2ecc71";
+                } else {
+                    input.style.borderColor = "#e74c3c";
+                }
+            }
+            document.getElementById("f3-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `Правильные ответы: ha cambiado, han trabajado, ha sentido, ha intentado`;
+            document.getElementById("f3-feedback").classList.add("show");
+        }
+
+        // Проверка F4
+        function checkF4() {
+            const answers = ["había vivido", "habían estado", "había sido", "habían decidido"];
+            let correct = 0;
+            let total = answers.length;
+            for (let i = 1; i <= total; i++) {
+                const input = document.getElementById("f-" + (i + 12));
+                const val = input.value.trim().toLowerCase();
+                const isCorrect = val === answers[i-1].toLowerCase() || 
+                                  val.includes(answers[i-1].toLowerCase());
+                if (isCorrect) {
+                    correct++;
+                    input.style.borderColor = "#2ecc71";
+                } else {
+                    input.style.borderColor = "#e74c3c";
+                }
+            }
+            document.getElementById("f4-feedback").innerHTML = 
+                `Правильных ответов: ${correct} из ${total}.<br>` +
+                `Правильные ответы: había vivido, habían estado, había sido, habían decidido`;
+            document.getElementById("f4-feedback").classList.add("show");
+        }
+    </script>
+
+</body>
+</html>
