@@ -5,3 +5,5 @@ OracionesTemporalesIndefImperf https://arinakasatova1433-tech.github.io/Pasados/
 Los Incas https://arinakasatova1433-tech.github.io/Pasados/LosIncas.html
 
 Minimal.html https://arinakasatova1433-tech.github.io/Pasados/Minimal.html
+
+DelReves.html https://arinakasatova1433-tech.github.io/Pasados/DelReves.html
